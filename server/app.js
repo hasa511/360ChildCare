@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import authRoutes from './routes/authRoutes.js';
 import { notFound, errorHandler } from './middleware/error.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -23,6 +24,8 @@ if (process.env.NODE_ENV !== 'test') app.use(morgan('dev'));
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: '360ChildCare API is healthy', time: new Date().toISOString() });
 });
+
+app.use('/api/auth', authRoutes);
 
 // In production, serve the built React app from client/dist
 if (process.env.NODE_ENV === 'production') {
