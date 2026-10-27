@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
 import childRoutes from './routes/childRoutes.js';
 import classroomRoutes from './routes/classroomRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middleware/error.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -30,6 +31,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/children', childRoutes);
 app.use('/api/classrooms', classroomRoutes);
+app.use('/api/users', userRoutes);
 
 // In production, serve the built React app from client/dist
 if (process.env.NODE_ENV === 'production') {
