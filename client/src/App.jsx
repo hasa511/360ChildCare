@@ -8,6 +8,8 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Children from './pages/Children.jsx';
 import Classrooms from './pages/Classrooms.jsx';
+import Attendance from './pages/Attendance.jsx';
+import Activities from './pages/Activities.jsx';
 import Profile from './pages/Profile.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -27,6 +29,8 @@ export default function App() {
         <Route index element={<Navigate to="/children" replace />} />
         <Route path="children" element={<Children />} />
         <Route path="classrooms" element={<ProtectedRoute roles={['admin', 'staff']}><Classrooms /></ProtectedRoute>} />
+        <Route path="attendance" element={<Attendance />} />
+        <Route path="activities" element={<Activities />} />
         <Route path="profile" element={<Profile />} />
       </Route>
 
