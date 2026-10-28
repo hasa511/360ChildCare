@@ -7,9 +7,12 @@ import { Spinner } from './components/ui.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Children from './pages/Children.jsx';
+import ChildDetail from './pages/ChildDetail.jsx';
 import Classrooms from './pages/Classrooms.jsx';
 import Attendance from './pages/Attendance.jsx';
 import Activities from './pages/Activities.jsx';
+import Incidents from './pages/Incidents.jsx';
+import Billing from './pages/Billing.jsx';
 import Profile from './pages/Profile.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -28,9 +31,12 @@ export default function App() {
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route index element={<Navigate to="/children" replace />} />
         <Route path="children" element={<Children />} />
+        <Route path="children/:id" element={<ChildDetail />} />
         <Route path="classrooms" element={<ProtectedRoute roles={['admin', 'staff']}><Classrooms /></ProtectedRoute>} />
         <Route path="attendance" element={<Attendance />} />
         <Route path="activities" element={<Activities />} />
+        <Route path="incidents" element={<Incidents />} />
+        <Route path="billing" element={<ProtectedRoute roles={['admin', 'parent']}><Billing /></ProtectedRoute>} />
         <Route path="profile" element={<Profile />} />
       </Route>
 

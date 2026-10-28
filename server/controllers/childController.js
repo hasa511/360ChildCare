@@ -1,4 +1,8 @@
 import Child from '../models/Child.js';
+import Attendance from '../models/Attendance.js';
+import ActivityLog from '../models/ActivityLog.js';
+import Incident from '../models/Incident.js';
+import Invoice from '../models/Invoice.js';
 import User from '../models/User.js';
 import { asyncHandler, ApiError, escapeRegex, pick } from '../utils/helpers.js';
 import { ensureChildAccess } from '../utils/access.js';
@@ -61,9 +65,15 @@ export const updateChild = asyncHandler(async (req, res) => {
   res.json({ success: true, data: await populateChild(Child.findById(child._id)) });
 });
 
-// @route DELETE /api/children/:id   (admin)
+// @route DELETE /api/children/:id   (admin) - removes child and all related records
 export const deleteChild = asyncHandler(async (req, res) => {
   const child = await Child.findByIdAndDelete(req.params.id);
   if (!child) throw new ApiError(404, 'Child not found');
-  res.json({ success: true, message: 'Child deleted' });
+  await Promise.all([
+    Attendance.deleteMany({ child: child._id }),
+    ActivityLog.deleteMany({ child: child._id }),
+    Incident.deleteMany({ child: child._id }),
+    Invoice.deleteMany({ child: child._id }),
+  ]);
+  res.json({ success: true, message: 'Child and related records deleted' });
 });

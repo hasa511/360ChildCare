@@ -11,6 +11,8 @@ import classroomRoutes from './routes/classroomRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import attendanceRoutes from './routes/attendanceRoutes.js';
 import activityRoutes from './routes/activityRoutes.js';
+import incidentRoutes from './routes/incidentRoutes.js';
+import invoiceRoutes from './routes/invoiceRoutes.js';
 import { notFound, errorHandler } from './middleware/error.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -36,6 +38,8 @@ app.use('/api/classrooms', classroomRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/activities', activityRoutes);
+app.use('/api/incidents', incidentRoutes);
+app.use('/api/invoices', invoiceRoutes);
 
 // In production, serve the built React app from client/dist
 if (process.env.NODE_ENV === 'production') {
