@@ -13,6 +13,9 @@ import Attendance from './pages/Attendance.jsx';
 import Activities from './pages/Activities.jsx';
 import Incidents from './pages/Incidents.jsx';
 import Billing from './pages/Billing.jsx';
+import Announcements from './pages/Announcements.jsx';
+import Messages from './pages/Messages.jsx';
+import Users from './pages/Users.jsx';
 import Profile from './pages/Profile.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -37,6 +40,9 @@ export default function App() {
         <Route path="activities" element={<Activities />} />
         <Route path="incidents" element={<Incidents />} />
         <Route path="billing" element={<ProtectedRoute roles={['admin', 'parent']}><Billing /></ProtectedRoute>} />
+        <Route path="announcements" element={<Announcements />} />
+        <Route path="messages" element={<Messages />} />
+        <Route path="users" element={<ProtectedRoute roles={['admin']}><Users /></ProtectedRoute>} />
         <Route path="profile" element={<Profile />} />
       </Route>
 
