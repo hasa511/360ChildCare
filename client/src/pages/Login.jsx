@@ -83,24 +83,10 @@ export default function Login() {
             {submitting ? 'Signing in...' : 'Sign in'}
           </button>
           <p className="auth-switch">
-            New parent? <Link to="/register">Create an account</Link>
+             <Link to="/register">Create an account</Link>
           </p>
 
-          <div className="demo-box">
-            <span className="muted small">Demo accounts (after running the seed script):</span>
-            <div className="demo-buttons">
-              {DEMO.map((d) => (
-                <button
-                  type="button"
-                  key={d.role}
-                  className="btn btn-ghost btn-sm"
-                  onClick={() => setForm({ email: d.email, password: d.password })}
-                >
-                  {d.role}
-                </button>
-              ))}
-            </div>
-          </div>
+          
         </form>
       </div>
     </div>

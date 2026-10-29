@@ -6,6 +6,7 @@ import { Spinner } from './components/ui.jsx';
 
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import Dashboard from './pages/Dashboard.jsx';
 import Children from './pages/Children.jsx';
 import ChildDetail from './pages/ChildDetail.jsx';
 import Classrooms from './pages/Classrooms.jsx';
@@ -32,7 +33,7 @@ export default function App() {
       <Route path="/register" element={<GuestOnly><Register /></GuestOnly>} />
 
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-        <Route index element={<Navigate to="/children" replace />} />
+        <Route index element={<Dashboard />} />
         <Route path="children" element={<Children />} />
         <Route path="children/:id" element={<ChildDetail />} />
         <Route path="classrooms" element={<ProtectedRoute roles={['admin', 'staff']}><Classrooms /></ProtectedRoute>} />
